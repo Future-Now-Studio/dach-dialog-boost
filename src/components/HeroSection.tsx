@@ -12,8 +12,10 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center section-spacing bg-gradient-to-br from-background via-secondary/50 to-background overflow-hidden">
+      {/* Background base while video loads */}
+      <div className="absolute inset-0 z-0 bg-black" aria-hidden="true"></div>
       {/* Background video */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-[1] pointer-events-none">
         <video
           className="w-full h-full object-cover"
           autoPlay
@@ -21,7 +23,6 @@ const HeroSection = () => {
           loop
           playsInline
           preload="auto"
-          poster="/placeholder.svg"
           aria-hidden="true"
         >
 

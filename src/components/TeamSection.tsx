@@ -90,18 +90,18 @@ const TeamSection = () => {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid sm:grid-cols-1 lg:grid-cols-1 gap-16 lg:gap-8">
             {team.map((member, index) => {
               const IconComponent = member.icon;
               return (
                 <motion.div key={index} className="overflow-hidden hover-lift group" variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} whileHover={{ y: -6, scale: 1.01 }} transition={{ type: 'spring', stiffness: 260, damping: 20 }}>
                   <Card className="border-0 shadow-card">
                   <CardContent className="p-6 sm:p-8">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4 sm:mb-6">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-2xl flex items-center justify-center mb-4 sm:mb-0 sm:mr-6 group-hover:scale-110 transition-transform animate-rotate-in">
+                    <div className="flex flex-col items-center mb-4 sm:mb-6">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform animate-rotate-in">
                         <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground" />
                       </div>
-                      <div className="flex-1 text-center sm:text-left">
+                      <div className="flex-1 text-center">
                         <h4 className="text-xl sm:text-2xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
                           {member.name}
                         </h4>
@@ -109,13 +109,13 @@ const TeamSection = () => {
                       </div>
                     </div>
                     
-                    <p className="text-muted-foreground leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
+                    <p className="text-muted-foreground leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base text-center">
                       {member.description}
                     </p>
                     
                     <div className="space-y-2">
-                      <p className="text-xs sm:text-sm font-semibold text-foreground mb-2 sm:mb-3">Expertise:</p>
-                      <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                      <p className="text-xs sm:text-sm font-semibold text-foreground mb-2 sm:mb-3 text-center">Expertise:</p>
+                      <div className="flex flex-wrap gap-2 justify-center">
                         {member.expertise.map((skill, skillIndex) => (
                           <Badge key={skillIndex} variant="secondary" className="text-xs hover-float stagger-animation animate-bounce-in" style={{ animationDelay: `${skillIndex * 0.1}s` }}>
                             {skill}

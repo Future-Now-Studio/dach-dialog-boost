@@ -53,6 +53,12 @@ const ContactSection = () => {
       subtitle: "19-30% mehr Kosten als mit uns",
       icon: Euro,
       color: "text-primary"
+    },
+    {
+      title: "Fazit",
+      subtitle: "Sparen Sie bares Geld mit zuverlässigen Mitarbeitern",
+      icon: Euro,
+      color: "text-primary"
     }
   ];
 
@@ -94,24 +100,7 @@ const ContactSection = () => {
             );
           })}
 
-          {/* Quick Stats */}
-          <motion.div variants={inViewVariants.scaleIn} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="sm:col-span-2 lg:col-span-1" whileHover={{ y: -6, scale: 1.01 }} transition={{ type: 'spring', stiffness: 260, damping: 20 }}>
-            <Card className="text-center hover-lift shadow-card border-green/30 bg-green/5">
-            <CardHeader className="p-4 sm:p-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green/10 to-green/5 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 animate-bounce-in">
-                <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-green-700" />
-              </div>
-                <CardTitle className="text-lg sm:text-xl font-bold text-green-700">
-                Fazit
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-4 sm:p-6 pt-0">
-              <p className="text-sm sm:text-lg font-semibold text-green-700">
-                Sparen Sie bares Geld mit zuverlässigen Mitarbeitern
-              </p>
-            </CardContent>
-            </Card>
-          </motion.div>
+         
         </div>
 
         <motion.div variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>

@@ -149,9 +149,11 @@ const ServicesSection = () => {
 
             <motion.div className="text-center" variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 hover-float">
-                <Phone className="w-6 h-6 sm:w-8 sm:h-8 text-success" />
+                <Phone className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
               </div>
+              <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">
               <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Muttersprachlich</h4>
+              </h4>
               <p className="text-xs sm:text-sm text-muted-foreground">
                 Perfekte deutsche Sprachkenntnisse und kulturelles Verständnis für den DACH-Raum
               </p>
