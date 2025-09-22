@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Trophy, TrendingUp } from "lucide-react";
-import logo from "@/assets/logo.png";
+import { motion } from "framer-motion";
+import { inViewVariants } from "@/lib/utils";
+import logo from "@/assets/Dach-Logo.svg";
 
 const HeroSection = () => {
   const scrollToContact = () => {
@@ -10,44 +12,85 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center section-spacing bg-gradient-to-br from-background via-secondary/50 to-background overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-64 sm:h-64 bg-primary/10 rounded-full blur-3xl animate-pulse-glow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-96 sm:h-96 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{animationDelay: '1s'}}></div>
+      {/* Background video */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/placeholder.svg"
+          aria-hidden="true"
+        >
+
+          <source src="https://www.pexels.com/download/video/7108186/" type="video/mp4" />
+        </video>
+      </div>
+      {/* Readability overlays (gradient + bottom fade) */}
+      <div
+        className="absolute inset-0 z-[4] pointer-events-none bg-gradient-to-b from-black/70 via-black/40 to-black/20 lg:bg-gradient-to-r lg:from-black/70 lg:via-black/40 lg:to-transparent"
+        aria-hidden="true"
+      ></div>
+      <div
+        className="absolute inset-x-0 bottom-0 h-1/3 z-[5] pointer-events-none bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+        aria-hidden="true"
+      ></div>
+
+      {/* Animated background elements (kept behind readability overlays) */}
+      <div className="absolute inset-0 overflow-hidden z-[2] pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-64 sm:h-64 bg-primary/10 rounded-full blur-3xl"
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          whileInView={{ y: -30 }}
+          viewport={{ amount: 0.8 }}
+          style={{ willChange: 'transform' }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-96 sm:h-96 bg-primary/10 rounded-full blur-3xl"
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          whileInView={{ y: 30 }}
+          viewport={{ amount: 0.8 }}
+          style={{ willChange: 'transform' }}
+        />
       </div>
       
       <div className="container mx-auto container-padding relative z-10">
-        {/* Logo */}
-        <div className="text-center mb-8 animate-fade-in-up">
-          <img 
-            src={logo} 
-            alt="DACH Dialog Logo" 
-            className="h-12 sm:h-16 md:h-20 lg:h-24 mx-auto hover-float"
-          />
-        </div>
+       
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Column - Main Content */}
-          <div className="text-center lg:text-left animate-fade-in-left">
-            <div className="mb-4 sm:mb-6 inline-flex items-center px-3 py-2 sm:px-4 bg-accent/10 text-accent rounded-full text-xs sm:text-sm font-medium animate-bounce-in">
+          <motion.div
+            className="text-center lg:text-left"
+            variants={inViewVariants.fadeLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+          >
+            <div className="mb-4 sm:mb-6 inline-flex items-center px-3 py-2 sm:px-4 bg-primary/20 text-primary-light rounded-full text-xs sm:text-sm font-medium animate-bounce-in">
               <Trophy className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               Bis zu 60% Kostenersparnis
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent animate-slide-in-up">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-primary-light via-primary-light to-white bg-clip-text text-transparent animate-slide-in-up">
                 Ihre Stimme
               </span>
               <br />
-              <span className="text-foreground animate-slide-in-up [animation-delay:0.2s]">im DACH-Raum</span>
+              <span className="text-white animate-slide-in-up [animation-delay:0.2s]">im DACH-Raum</span>
             </h1>
             
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-3 sm:mb-4 font-medium animate-fade-in-up [animation-delay:0.4s]">
+            <p className="text-lg sm:text-xl md:text-2xl text-white mb-3 sm:mb-4 font-medium animate-fade-in-up [animation-delay:0.4s]">
               Sales & Support auf höchstem Niveau
             </p>
             
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up [animation-delay:0.6s]">
-              Qualifizierte deutschsprachige Mitarbeiter aus dem Kosovo – bis zu <strong className="text-accent">60% Kostenersparnis</strong> bei gleichbleibender oder besserer Qualität.
+            <p className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up [animation-delay:0.6s]">
+              Qualifizierte deutschsprachige Mitarbeiter aus dem Kosovo – bis zu <strong className="text-primary-light">60% Kostenersparnis</strong> bei gleichbleibender oder besserer Qualität.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12 justify-center lg:justify-start animate-slide-in-up [animation-delay:0.8s]">
@@ -73,25 +116,32 @@ const HeroSection = () => {
             {/* Stats - Mobile optimized */}
             <div className="grid grid-cols-3 gap-4 sm:gap-8">
               <div className="text-center stagger-animation animate-bounce-in">
-                <div className="text-2xl sm:text-3xl font-bold text-primary">60%</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Kostenersparnis</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary-light">60%</div>
+                <div className="text-xs sm:text-sm text-white/80">Kostenersparnis</div>
               </div>
               <div className="text-center stagger-animation animate-bounce-in">
-                <div className="text-2xl sm:text-3xl font-bold text-primary">100%</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Deutsch</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary-light">100%</div>
+                <div className="text-xs sm:text-sm text-white/80">Deutsch</div>
               </div>
               <div className="text-center stagger-animation animate-bounce-in">
-                <div className="text-2xl sm:text-3xl font-bold text-primary">24/7</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Verfügbar</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary-light">24/7</div>
+                <div className="text-xs sm:text-sm text-white/80">Verfügbar</div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Visual Elements */}
-          <div className="relative mt-8 lg:mt-0 animate-fade-in-right [animation-delay:1s]">
+          <motion.div
+            className="relative mt-8 lg:mt-0"
+            variants={inViewVariants.fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <div className="relative">
               {/* Main visual card */}
               <div className="bg-card rounded-2xl p-6 sm:p-8 shadow-elegant hover-lift">
+                
                 <div className="flex items-center mb-4 sm:mb-6">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center animate-rotate-in">
                     <Users className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
@@ -107,7 +157,7 @@ const HeroSection = () => {
                     <span className="text-xs sm:text-sm">Deutschkenntnisse</span>
                     <div className="flex items-center">
                       <div className="w-16 sm:w-24 h-2 bg-secondary rounded-full">
-                        <div className="w-full h-2 bg-success rounded-full animate-fade-in-right [animation-delay:1.2s]"></div>
+                        <div className="w-full h-2 bg-green-500 rounded-full animate-fade-in-right [animation-delay:1.2s]"></div>
                       </div>
                       <span className="ml-2 text-xs sm:text-sm font-medium">100%</span>
                     </div>
@@ -117,9 +167,9 @@ const HeroSection = () => {
                     <span className="text-xs sm:text-sm">Verfügbarkeit</span>
                     <div className="flex items-center">
                       <div className="w-16 sm:w-24 h-2 bg-secondary rounded-full">
-                        <div className="w-full h-2 bg-success rounded-full animate-fade-in-right [animation-delay:1.4s]"></div>
+                        <div className="w-full h-2 bg-green-500 rounded-full animate-fade-in-right [animation-delay:1.4s]"></div>
                       </div>
-                      <span className="ml-2 text-xs sm:text-sm font-medium">24/7</span>
+                      <span className="ml-2 text-xs sm:text-sm font-medium">100%</span>
                     </div>
                   </div>
                   
@@ -142,16 +192,9 @@ const HeroSection = () => {
                 </div>
               </div>
               
-              {/* Floating elements - Mobile optimized */}
-              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 bg-accent rounded-2xl flex items-center justify-center animate-pulse-glow">
-                <span className="text-sm sm:text-2xl font-bold text-accent-foreground">DE</span>
-              </div>
-              
-              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-14 h-14 sm:w-20 sm:h-20 bg-primary rounded-2xl flex items-center justify-center animate-pulse-glow" style={{animationDelay: '0.5s'}}>
-                <span className="text-sm sm:text-2xl font-bold text-primary-foreground">AT</span>
-              </div>
+             
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

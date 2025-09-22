@@ -1,6 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, Users, Code, ArrowRight, CheckCircle, Target, Headphones } from "lucide-react";
+import { motion } from "framer-motion";
+import { inViewVariants } from "@/lib/utils";
 
 const ServicesSection = () => {
   const scrollToContact = () => {
@@ -48,9 +50,9 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="section-spacing bg-gradient-subtle">
+    <section id="services" className="section-spacing bg-gradient-subtle">
       <div className="container mx-auto container-padding">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <motion.div className="text-center mb-16" variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
             Unsere <span className="text-primary">Leistungen</span>
           </h2>
@@ -58,17 +60,25 @@ const ServicesSection = () => {
             Maßgeschneiderte Lösungen für Sales, Support und IT – mit deutschsprachigen Fachkräften, 
             die Ihre Erwartungen übertreffen.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <Card 
+              <motion.div
                 key={index} 
-                className="relative overflow-hidden hover-lift group border-0 shadow-card bg-card stagger-animation animate-slide-in-up"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="relative overflow-hidden hover-lift group border-0 shadow-card bg-card"
+                variants={inViewVariants.scaleIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                whileHover={{ y: -6, scale: 1.01 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 20 }}
               >
+                <Card 
+                  className="border-0 shadow-none bg-transparent"
+                >
                 <div className="absolute top-0 right-0 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full animate-rotate-in"></div>
                 
                 <CardHeader className="relative z-10 p-4 sm:p-6">
@@ -99,13 +109,14 @@ const ServicesSection = () => {
                     </p>
                   </div>
                 </CardContent>
-              </Card>
+                </Card>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Benefits Section */}
-        <div className="bg-card rounded-3xl p-8 lg:p-12 shadow-elegant animate-scale-in">
+        <motion.div className="bg-card rounded-3xl p-8 lg:p-12 shadow-elegant" variants={inViewVariants.scaleIn} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-foreground mb-4">
               Warum <span className="text-accent">DACH Dialog</span>?
@@ -116,7 +127,7 @@ const ServicesSection = () => {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            <div className="text-center animate-bounce-in stagger-animation">
+            <motion.div className="text-center" variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 hover-float">
                 <span className="text-xl sm:text-2xl font-bold text-accent">60%</span>
               </div>
@@ -124,9 +135,9 @@ const ServicesSection = () => {
               <p className="text-xs sm:text-sm text-muted-foreground">
                 Bis zu 60% günstiger als deutsche externe Anbieter – mit mindestens gleichbleibender, oft besserer Qualität
               </p>
-            </div>
+            </motion.div>
 
-            <div className="text-center animate-bounce-in stagger-animation">
+            <motion.div className="text-center" variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 hover-float">
                 <Users className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
               </div>
@@ -134,9 +145,9 @@ const ServicesSection = () => {
               <p className="text-xs sm:text-sm text-muted-foreground">
                 Unsere Mitarbeiter sind loyal und motiviert – Stabilität und Kontinuität für Ihr Unternehmen
               </p>
-            </div>
+            </motion.div>
 
-            <div className="text-center animate-bounce-in stagger-animation">
+            <motion.div className="text-center" variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 hover-float">
                 <Phone className="w-6 h-6 sm:w-8 sm:h-8 text-success" />
               </div>
@@ -144,7 +155,7 @@ const ServicesSection = () => {
               <p className="text-xs sm:text-sm text-muted-foreground">
                 Perfekte deutsche Sprachkenntnisse und kulturelles Verständnis für den DACH-Raum
               </p>
-            </div>
+            </motion.div>
           </div>
 
           <div className="text-center mt-12">
@@ -158,7 +169,7 @@ const ServicesSection = () => {
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
