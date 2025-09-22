@@ -95,33 +95,33 @@ const TeamSection = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {team.map((member, index) => {
               const IconComponent = member.icon;
               return (
-                <Card key={index} className="overflow-hidden hover-lift group border-0 shadow-card animate-fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
-                  <CardContent className="p-8">
-                    <div className="flex items-start mb-6">
-                      <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                        <IconComponent className="w-8 h-8 text-primary-foreground" />
+                <Card key={index} className="overflow-hidden hover-lift group border-0 shadow-card animate-fade-in-up stagger-animation" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <CardContent className="p-6 sm:p-8">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4 sm:mb-6">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-2xl flex items-center justify-center mb-4 sm:mb-0 sm:mr-6 group-hover:scale-110 transition-transform animate-rotate-in">
+                        <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground" />
                       </div>
-                      <div className="flex-1">
-                        <h4 className="text-2xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+                      <div className="flex-1 text-center sm:text-left">
+                        <h4 className="text-xl sm:text-2xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
                           {member.name}
                         </h4>
-                        <p className="text-accent font-medium mb-4">{member.role}</p>
+                        <p className="text-accent font-medium mb-2 sm:mb-4 text-sm sm:text-base">{member.role}</p>
                       </div>
                     </div>
                     
-                    <p className="text-muted-foreground leading-relaxed mb-6">
+                    <p className="text-muted-foreground leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
                       {member.description}
                     </p>
                     
                     <div className="space-y-2">
-                      <p className="text-sm font-semibold text-foreground mb-3">Expertise:</p>
-                      <div className="flex flex-wrap gap-2">
+                      <p className="text-xs sm:text-sm font-semibold text-foreground mb-2 sm:mb-3">Expertise:</p>
+                      <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
                         {member.expertise.map((skill, skillIndex) => (
-                          <Badge key={skillIndex} variant="secondary" className="text-xs">
+                          <Badge key={skillIndex} variant="secondary" className="text-xs hover-float stagger-animation animate-bounce-in" style={{ animationDelay: `${skillIndex * 0.1}s` }}>
                             {skill}
                           </Badge>
                         ))}
@@ -145,21 +145,21 @@ const TeamSection = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
             {values.map((value, index) => {
               const IconComponent = value.icon;
               return (
-                <Card key={index} className="border-0 hover-lift group animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <CardContent className="p-6">
+                <Card key={index} className="border-0 hover-lift group animate-fade-in-up stagger-animation" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <CardContent className="p-4 sm:p-6">
                     <div className="flex items-start">
-                      <div className="w-12 h-12 bg-success/10 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
-                        <IconComponent className="w-6 h-6 text-success" />
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-success/10 rounded-xl flex items-center justify-center mr-3 sm:mr-4 group-hover:scale-110 transition-transform animate-bounce-in">
+                        <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-success" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-bold text-foreground mb-2 group-hover:text-success transition-colors">
+                        <h4 className="font-bold text-foreground mb-2 group-hover:text-success transition-colors text-sm sm:text-base">
                           {value.title}
                         </h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
+                        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                           {value.description}
                         </p>
                       </div>

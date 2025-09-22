@@ -60,41 +60,41 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <Card 
                 key={index} 
-                className="relative overflow-hidden hover-lift group border-0 shadow-card bg-card"
+                className="relative overflow-hidden hover-lift group border-0 shadow-card bg-card stagger-animation animate-slide-in-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full"></div>
+                <div className="absolute top-0 right-0 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full animate-rotate-in"></div>
                 
-                <CardHeader className="relative z-10">
-                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <IconComponent className="w-8 h-8 text-primary-foreground" />
+                <CardHeader className="relative z-10 p-4 sm:p-6">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-2xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform animate-bounce-in">
+                    <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground" />
                   </div>
-                  <CardTitle className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                  <CardTitle className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
                     {service.title}
                   </CardTitle>
-                  <CardDescription className="text-muted-foreground text-lg">
+                  <CardDescription className="text-muted-foreground text-sm sm:text-base lg:text-lg">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
                 
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
+                <CardContent className="space-y-4 p-4 sm:p-6 pt-0">
+                  <div className="space-y-2 sm:space-y-3">
                     {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-accent mt-1 mr-3 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      <div key={featureIndex} className="flex items-start hover-float">
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-accent mt-0.5 sm:mt-1 mr-2 sm:mr-3 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm text-muted-foreground">{feature}</span>
                       </div>
                     ))}
                   </div>
                   
-                  <div className="p-4 bg-accent/10 rounded-lg mt-6">
-                    <p className="text-sm text-foreground font-medium">
+                  <div className="p-3 sm:p-4 bg-accent/10 rounded-lg mt-4 sm:mt-6 animate-fade-in-up">
+                    <p className="text-xs sm:text-sm text-foreground font-medium">
                       {service.highlight}
                     </p>
                   </div>
@@ -115,33 +115,33 @@ const ServicesSection = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-accent">60%</span>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="text-center animate-bounce-in stagger-animation">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 hover-float">
+                <span className="text-xl sm:text-2xl font-bold text-accent">60%</span>
               </div>
-              <h4 className="font-semibold text-foreground mb-2">Kostenersparnis</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Kostenersparnis</h4>
+              <p className="text-xs sm:text-sm text-muted-foreground">
                 Bis zu 60% günstiger als deutsche externe Anbieter – mit mindestens gleichbleibender, oft besserer Qualität
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-primary" />
+            <div className="text-center animate-bounce-in stagger-animation">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 hover-float">
+                <Users className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
               </div>
-              <h4 className="font-semibold text-foreground mb-2">Keine Jobhopper</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Keine Jobhopper</h4>
+              <p className="text-xs sm:text-sm text-muted-foreground">
                 Unsere Mitarbeiter sind loyal und motiviert – Stabilität und Kontinuität für Ihr Unternehmen
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-8 h-8 text-success" />
+            <div className="text-center animate-bounce-in stagger-animation">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 hover-float">
+                <Phone className="w-6 h-6 sm:w-8 sm:h-8 text-success" />
               </div>
-              <h4 className="font-semibold text-foreground mb-2">Muttersprachlich</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Muttersprachlich</h4>
+              <p className="text-xs sm:text-sm text-muted-foreground">
                 Perfekte deutsche Sprachkenntnisse und kulturelles Verständnis für den DACH-Raum
               </p>
             </div>

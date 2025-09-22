@@ -17,11 +17,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 15%;
 
-    /* Brand Colors - Professional Navy & Electric Blue */
-    --primary: 215 85% 25%;
+    /* Brand Colors - DACH Dialog Navy Blue from Logo */
+    --primary: 210 65% 25%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 215 75% 35%;
-    --primary-glow: 215 95% 55%;
+    --primary-light: 210 55% 35%;
+    --primary-glow: 210 75% 45%;
 
     /* Secondary - Trust Building Gray */
     --secondary: 215 15% 95%;
@@ -31,10 +31,10 @@
     --muted: 215 15% 92%;
     --muted-foreground: 215 15% 45%;
 
-    /* Accent - CTA Orange/Gold */
-    --accent: 35 90% 55%;
+    /* Accent - Subtle Light Blue for CTAs */
+    --accent: 210 45% 55%;
     --accent-foreground: 0 0% 100%;
-    --accent-hover: 35 85% 50%;
+    --accent-hover: 210 55% 45%;
 
     /* Success - German Flag inspired */
     --success: 0 85% 60%;
@@ -154,6 +154,34 @@
     animation: pulse-glow 3s ease-in-out infinite;
   }
   
+  .animate-slide-in-up {
+    animation: slide-in-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .animate-bounce-in {
+    animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+  
+  .animate-rotate-in {
+    animation: rotate-in 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .hover-float {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-float:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+  }
+  
+  .stagger-animation:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-animation:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-animation:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-animation:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-animation:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-animation:nth-child(6) { animation-delay: 0.6s; }
+  
   .hover-lift {
     transition: var(--transition-smooth);
   }
@@ -250,5 +278,45 @@
   }
   50% {
     box-shadow: 0 0 60px hsl(var(--primary-glow) / 0.3);
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate-in {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
   }
 }
