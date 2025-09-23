@@ -163,7 +163,7 @@ const ServicesSection = () => {
               size="lg"
               variant="cta"
               onClick={scrollToContact}
-              className="text-lg px-4 py-4 h-auto group"
+              className="text-md px-4 py-4 h-auto group"
             >
               Kostenlose Beratung anfragen
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -9,7 +9,10 @@ const HeroSection = () => {
     const contactSection = document.getElementById('contact');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
-
+  const scrollToServices = () => {
+    const contactSection = document.getElementById('services');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <section className="relative min-h-screen flex items-center section-spacing bg-gradient-to-br from-background via-secondary/50 to-background overflow-hidden">
       {/* Background base while video loads */}
@@ -108,6 +111,7 @@ const HeroSection = () => {
               <Button 
                 size="lg"
                 variant="outline"
+                onClick={scrollToServices}
                 className="text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 h-auto border-2 hover:bg-primary hover:text-primary-foreground w-full sm:w-auto"
               >
                 Mehr erfahren
