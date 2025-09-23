@@ -4,13 +4,7 @@ html:focus-within {
 }
 
 /* Improve logo rendering on mobile */
-.logo-crisp {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Avoid GPU transforms that can blur SVG on mobile */
-}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

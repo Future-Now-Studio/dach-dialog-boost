@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import logo from "@/assets/Dach-Logo.svg";
+import logo from "@/assets/Dachlogo.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
