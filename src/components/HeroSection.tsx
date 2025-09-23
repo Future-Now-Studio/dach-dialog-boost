@@ -31,7 +31,7 @@ const HeroSection = () => {
       </div>
       {/* Readability overlays (gradient + bottom fade) */}
       <div
-        className="absolute inset-0 z-[4] pointer-events-none bg-gradient-to-b from-black/70 via-black/40 to-black/20 lg:bg-gradient-to-r lg:from-black/70 lg:via-black/40 lg:to-transparent"
+        className="absolute inset-0 z-[4] pointer-events-none bg-gradient-to-b from-black/70 via-black/70 to-black/20 lg:bg-gradient-to-r lg:from-black/70 lg:via-black/40 lg:to-transparent"
         aria-hidden="true"
       ></div>
       <div

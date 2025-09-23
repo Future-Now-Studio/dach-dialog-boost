@@ -151,9 +151,7 @@ const ServicesSection = () => {
               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 hover-float">
                 <Phone className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
               </div>
-              <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">
               <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Muttersprachlich</h4>
-              </h4>
               <p className="text-xs sm:text-sm text-muted-foreground">
                 Perfekte deutsche Sprachkenntnisse und kulturelles Verständnis für den DACH-Raum
               </p>
@@ -165,7 +163,7 @@ const ServicesSection = () => {
               size="lg"
               variant="cta"
               onClick={scrollToContact}
-              className="text-lg px-8 py-4 h-auto group"
+              className="text-lg px-4 py-4 h-auto group"
             >
               Kostenlose Beratung anfragen
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -20,35 +20,13 @@ const Navbar = () => {
   };
 
   return (
-    <header className={`sticky top-0 z-50 transition-all bg-white ${isScrolled ? "shadow-sm" : "shadow-none"}`}>
+    <header className={`sticky top-0 z-50 transition-all bg-white ${isScrolled ? "shadow-sm" : "shadow-none"}`} style={{ position: "fixed", width: "100%", padding: "0.75em"}}>
       <nav className="container mx-auto container-padding flex items-center justify-between py-2 md:h-16">
         <div className="flex items-center">
-          <img src={logo} alt="DACH Dialog" className="h-10 md:h-12 object-contain" />
+          <a href="/"><img src={logo} alt="DACH Dialog" className="h-10 md:h-12 object-contain" /></a>
         </div>
-
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6 text-sm text-foreground">
-          <button className="hover:text-primary transition-colors" onClick={() => scrollTo("services")}>Leistungen</button>
-          <button className="hover:text-primary transition-colors" onClick={() => scrollTo("team")}>Team</button>
-          <button className="hover:text-primary transition-colors" onClick={() => scrollTo("contact")}>Kontakt</button>
-          <Button size="sm" variant="cta" onClick={() => scrollTo("contact")}>Jetzt anfragen</Button>
-        </div>
-
-        {/* Mobile burger */}
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger aria-label="Menü öffnen" className="p-2 rounded-md border">
-              <Menu className="h-5 w-5" />
-            </SheetTrigger>
-            <SheetContent side="right" className="w-80 sm:max-w-xs">
-              <div className="flex flex-col gap-4 mt-8">
-                <button className="text-base text-foreground text-left" onClick={() => scrollTo("services")}>Leistungen</button>
-                <button className="text-base text-foreground text-left" onClick={() => scrollTo("team")}>Team</button>
-                <button className="text-base text-foreground text-left" onClick={() => scrollTo("contact")}>Kontakt</button>
-                <Button size="sm" variant="cta" onClick={() => scrollTo("contact")} className="mt-2">Jetzt anfragen</Button>
-              </div>
-            </SheetContent>
-          </Sheet>
+        <div className="flex items-center">
+          <Button size="sm" variant="cta" onClick={() => scrollTo("contact")}>Jetzt unverbindlich anfragen</Button>
         </div>
       </nav>
     </header>

@@ -14,9 +14,12 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     company: '',
-    message: ''
+    message: '',
+    honeypot: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -25,20 +28,59 @@ const ContactSection = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Anfrage gesendet!",
-      description: "Vielen Dank für Ihr Interesse. Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      message: ''
-    });
+    if (formData.honeypot.trim() !== '') {
+      return; // simple spam protection
+    }
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/timobeyer_@outlook.de', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          message: formData.message,
+          _subject: 'Neue Anfrage über die DACH Dialog Website',
+          _template: 'box',
+          _captcha: 'false',
+          reply_to: formData.email
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      await response.json();
+
+      toast({
+        title: "Anfrage gesendet!",
+        description: "Vielen Dank für Ihr Interesse. Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+        honeypot: ''
+      });
+    } catch (error) {
+      toast({
+        title: "Senden fehlgeschlagen",
+        description: "Bitte versuchen Sie es später erneut oder schreiben Sie an info@dach-dialog.de.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const savings = [
@@ -46,7 +88,7 @@ const ContactSection = () => {
       title: "Externe Anbieter in Deutschland",
       subtitle: "Bis zu 60% teurer als wir",
       icon: Euro,
-      color: "text-destructive"
+      color: "text-primary"
     },
     {
       title: "Interne Lösungen",
@@ -114,6 +156,17 @@ const ContactSection = () => {
             <CardContent className="p-4 sm:p-8 pt-0">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  {/* Honeypot field for spam protection */}
+                  <input
+                    type="text"
+                    name="honeypot"
+                    autoComplete="off"
+                    value={formData.honeypot}
+                    onChange={handleInputChange}
+                    className="hidden"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                  />
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2 animate-fade-in-up stagger-animation">
                       <Label htmlFor="name" className="text-foreground font-medium text-sm sm:text-base">Name *</Label>
@@ -155,6 +208,19 @@ const ContactSection = () => {
                       placeholder="ihre.email@unternehmen.de"
                     />
                   </div>
+
+                  <div className="space-y-2 animate-fade-in-up stagger-animation">
+                    <Label htmlFor="phone" className="text-foreground font-medium text-sm sm:text-base">Telefon (optional)</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="border-2 focus:border-primary h-10 sm:h-12 text-sm sm:text-base hover-float"
+                      placeholder="z. B. +49 170 1234567"
+                    />
+                  </div>
                   
                   <div className="space-y-2 animate-fade-in-up stagger-animation">
                     <Label htmlFor="message" className="text-foreground font-medium text-sm sm:text-base">Nachricht *</Label>
@@ -173,10 +239,13 @@ const ContactSection = () => {
                     type="submit" 
                     size="lg"
                     variant="cta"
+                    disabled={isSubmitting}
                     className="w-full text-base sm:text-lg py-3 sm:py-4 h-auto group animate-bounce-in"
                   >
-                    Anfrage senden
-                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                    {isSubmitting ? 'Wird gesendet…' : 'Anfrage senden'}
+                    {!isSubmitting && (
+                      <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                    )}
                   </Button>
                   
                   <p className="text-xs sm:text-sm text-muted-foreground text-center animate-fade-in-up">
@@ -198,11 +267,11 @@ const ContactSection = () => {
                     <div className="space-y-3 sm:space-y-4">
                       <div className="flex items-center hover-float">
                         <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-accent mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground text-sm sm:text-base">Telefon: [Wird bei Kontakt bereitgestellt]</span>
+                        <span className="text-muted-foreground text-sm sm:text-base">Telefon: <a href="tel:+491781202439">+49 178 1202439</a></span>
                       </div>
                       <div className="flex items-center hover-float">
                         <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-accent mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground text-sm sm:text-base">E-Mail: [Wird bei Kontakt bereitgestellt]</span>
+                        <span className="text-muted-foreground text-sm sm:text-base">E-Mail: <a href="mailto:info@dach-dialog.de">info@dach-dialog.de</a></span>
                       </div>
                     </div>
                   </div>

@@ -90,7 +90,7 @@ const TeamSection = () => {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-1 lg:grid-cols-1 gap-16 lg:gap-8">
+          <div className="grid sm:grid-cols-1 lg:grid-cols-1 gap-6 lg:gap-8">
             {team.map((member, index) => {
               const IconComponent = member.icon;
               return (
