@@ -105,7 +105,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="section-spacing bg-gradient-subtle scroll-mt-24 md:scroll-mt-32">
+    <section className="section-spacing bg-gradient-subtle scroll-mt-24 md:scroll-mt-32">
       <div className="container mx-auto container-padding">
         <motion.div className="text-center mb-16" variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
@@ -145,7 +145,7 @@ const ContactSection = () => {
          
         </div>
 
-        <motion.div variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <motion.div variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} id="contact" className="scroll-mt-24 md:scroll-mt-32">
           <Card className="shadow-elegant border-0">
             <CardHeader className="p-4 sm:p-6">
               <CardTitle className="text-xl sm:text-2xl font-bold text-foreground flex items-center">

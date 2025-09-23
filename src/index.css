@@ -9,8 +9,7 @@ html:focus-within {
   image-rendering: crisp-edges;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  /* Avoid GPU transforms that can blur SVG on mobile */
 }
 @tailwind base;
 @tailwind components;
