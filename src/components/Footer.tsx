@@ -10,6 +10,7 @@ const Footer = () => {
             <p className="font-medium text-foreground">DACH Dialog</p>
           </div>
           <div className="flex md:justify-end gap-4 text-sm items-center" style={{ alignItems: "center", textAlign: "center", justifyContent: "center" }}>
+            <Link to="/karriere" className="hover:underline">Karriere</Link>
             <Link to="/impressum" className="hover:underline">Impressum</Link>
             <Link to="/datenschutz" className="hover:underline">Datenschutz</Link>
           </div>
