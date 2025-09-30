@@ -14,7 +14,7 @@ const HeroSection = () => {
     contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
   return (
-    <section className="relative min-h-screen flex items-center section-spacing bg-gradient-to-br from-background via-secondary/50 to-background overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center section-spacing bg-gradient-to-br from-background via-secondary/50 to-background overflow-hidden">
       {/* Background base while video loads */}
       <div className="absolute inset-0 z-0 bg-black" aria-hidden="true"></div>
       {/* Background video */}
@@ -179,7 +179,7 @@ const HeroSection = () => {
                   </div>
                   
                   <div className="flex justify-between items-center hover-float">
-                    <span className="text-xs sm:text-sm">Kosteneffizienz</span>
+                    <span className="text-xs sm:text-sm">Kosten</span>
                     <div className="flex items-center">
                       <div className="w-16 sm:w-24 h-2 bg-secondary rounded-full">
                         <div className="w-4/5 h-2 bg-accent rounded-full animate-fade-in-right [animation-delay:1.6s]"></div>

@@ -16,7 +16,7 @@ export default function Karriere() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center section-spacing bg-gradient-to-br from-background via-secondary/50 to-background overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center section-spacing bg-gradient-to-br from-background via-secondary/50 to-background overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -146,9 +146,9 @@ export default function Karriere() {
                       <span className="text-xs sm:text-sm">Bezahlung</span>
                       <div className="flex items-center">
                         <div className="w-16 sm:w-24 h-2 bg-secondary rounded-full">
-                          <div className="w-4/5 h-2 bg-accent rounded-full animate-fade-in-right [animation-delay:1.6s]"></div>
+                          <div className="w-full h-2 bg-accent rounded-full animate-fade-in-right [animation-delay:1.6s]"></div>
                         </div>
-                        <span className="ml-2 text-xs sm:text-sm font-medium">Top</span>
+                        <span className="ml-2 text-xs sm:text-sm font-medium">Top </span>
                       </div>
                     </div>
                   </div>
@@ -170,7 +170,7 @@ export default function Karriere() {
       </section>
 
       {/* Job Openings Section */}
-      <section className="section-spacing bg-gradient-subtle">
+      <section id="job-openings" className="section-spacing bg-gradient-subtle">
         <div className="container mx-auto container-padding">
           <motion.div className="text-center mb-16" variants={inViewVariants.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
@@ -432,7 +432,7 @@ export default function Karriere() {
       </section>
 
       {/* Our Promise Section */}
-      <section className="section-spacing">
+      <section id="our-promise" className="section-spacing">
         <div className="container mx-auto container-padding">
           <motion.div className="bg-card rounded-3xl p-8 lg:p-12 shadow-elegant" variants={inViewVariants.scaleIn} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
             <div className="text-center mb-12">

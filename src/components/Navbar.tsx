@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import logo from "@/assets/Dachlogo.png";
+import ResponsiveNavigation from "./ResponsiveNavigation";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,7 +36,8 @@ const Navbar = () => {
         <div className="flex items-center">
           <a href="/"><img src={logo} alt="DACH Dialog" className="block h-12 md:h-12 object-contain logo-crisp" width={225} height={112} decoding="sync" /></a>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center gap-3">
+          <ResponsiveNavigation />
           <Button size="sm" variant="cta" onClick={() => scrollTo("contact")}>Jetzt unverbindlich anfragen</Button>
         </div>
       </nav>
