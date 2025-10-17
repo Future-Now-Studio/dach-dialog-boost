@@ -16,6 +16,21 @@ export default function Impressum() {
         <div className="mx-auto max-w-4xl px-6">
           <article className="rounded-2xl bg-white dark:bg-slate-950 shadow-xl ring-1 ring-black/5 overflow-hidden">
             <div className="p-6 md:p-10 space-y-12">
+              {/* Company Name */}
+              <section className="space-y-4">
+                <h2 className="flex items-center gap-2 text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-100">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4">
+                      <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" />
+                    </svg>
+                  </span>
+                  Unternehmen
+                </h2>
+                <p className="text-slate-600 dark:text-slate-300">
+                  Dach-Dialog LLC
+                </p>
+              </section>
+
               {/* Anschrift */}
               <section className="space-y-4">
                 <h2 className="flex items-center gap-2 text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-100">
@@ -29,8 +44,9 @@ export default function Impressum() {
                 </h2>
                 <address className="not-italic leading-relaxed text-slate-600 dark:text-slate-300">
                   Ahmet Krasniqi 1<br />
-                  40000 Mitrovice
-                </address>
+                  40000 Mitrovice<br />          
+                  Kosovo 
+                  </address>
               </section>
 
               {/* Vertretung */}
@@ -70,53 +86,6 @@ export default function Impressum() {
                     </a>
                   </p>
                 </div>
-              </section>
-
-              {/* Registereintrag */}
-              <section className="space-y-4">
-                <h2 className="flex items-center gap-2 text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-100">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4">
-                      <path d="M6 3h9l3 3v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm9 0v3h3" />
-                    </svg>
-                  </span>
-                  Registereintrag
-                </h2>
-                <div className="text-slate-600 dark:text-slate-300">
-                  <p>Eintragung im Handelsregister.</p>
-                  <dl className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    <div>
-                      <dt className="text-sm text-slate-500">Registergericht</dt>
-                      <dd>Beantragt</dd>
-                    </div>
-                    <div>
-                      <dt className="text-sm text-slate-500">Registernummer</dt>
-                      <dd>Beantragt</dd>
-                    </div>
-                  </dl>
-                </div>
-              </section>
-
-              {/* Umsatzsteuer-ID */}
-              <section className="space-y-4">
-                <h2 className="flex items-center gap-2 text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-100">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4">
-                      <path d="M4 7h16M4 12h16M4 17h16" />
-                    </svg>
-                  </span>
-                  Umsatzsteuer-ID
-                </h2>
-                <p className="text-slate-600 dark:text-slate-300">
-                  Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: Beantragt
-                </p>
-              </section>
-
-              {/* Hinweis */}
-              <section className="pt-4 border-t border-slate-100 dark:border-slate-800">
-                <p className="text-xs leading-6 text-slate-500 dark:text-slate-400">
-                  Hinweis: Sofern einzelne Angaben (z. B. Registergericht, Registernummer, USt-ID) noch beantragt sind, werden sie nach Erhalt umgehend aktualisiert.
-                </p>
               </section>
             </div>
           </article>
