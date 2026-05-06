@@ -46,6 +46,18 @@ const ServicesSection = () => {
         "Moderne Technologien und Best Practices"
       ],
       highlight: "Hochqualifizierte IT-Fachkräfte für Ihre digitalen Projekte"
+    },
+    {
+      icon: Users,
+      title: "Personalberatung",
+      description: "Kompetente Vermittlung von Fach- und Führungskräften",
+      features: [
+        "Recruiting & Kandidatenauswahl",
+        "Direktvermittlung und Executive Search",
+        "Deutsch- und mehrsprachige Kandidaten",
+        "Branchenübergreifende Stellenvermittlung"
+      ],
+      highlight: "Die richtigen Talente für nachhaltige Unternehmensleistung"
     }
   ];
 
